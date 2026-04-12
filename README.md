@@ -103,14 +103,20 @@ http://127.0.0.1:5000
 2. **Selecciona el Destino** — Elige el departamento de llegada en el selector `Destino`.  
    → El marcador en el mapa cambiará a 🟣 **púrpura**.
 
+![Vista inicial con departamentos marcados en el mapa](screenshots/01_vista_inicial.png)
+
 3. **Presiona "Encontrar Camino"** — El algoritmo de Dijkstra calculará la ruta más corta.  
    → Se dibujarán **flechas rojas** sobre el mapa mostrando el recorrido.
+
+![Selección de origen y destino antes de calcular la ruta](screenshots/02_seleccion_destino.png)
 
 4. **Consulta el Panel Lateral** — Verás el detalle del recorrido:
    - Nombre de cada parada
    - Distancia del tramo recorrido (`+ X km este tramo`)
    - Distancia total acumulada (`Y km acumulado`)
    - Distancia total del viaje al final
+
+![Ruta calculada de Cajamarca a Arequipa con desglose en el panel lateral](screenshots/03_ruta_cajamarca_arequipa.png)
 
 ---
 
