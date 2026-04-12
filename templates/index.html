@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijkstra - Mapa de Rutas Perú</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Pasar variables Python a JS de forma segura para el IDE -->
+    <script id="departamentos-data" type="application/json">
+        {{ departamentos | tojson | safe }}
+    </script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="selector-container">
+            <label for="origen">Origen:</label>
+            <select id="origen">
+                <option value="" disabled selected>Seleccione</option>
+                {% for dep in departamentos.keys()|sort %}
+                <option value="{{ dep }}">{{ dep }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="selector-container">
+            <label for="destino">Destino:</label>
+            <select id="destino">
+                <option value="" disabled selected>Seleccione</option>
+                {% for dep in departamentos.keys()|sort %}
+                <option value="{{ dep }}">{{ dep }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <button id="btn-calcular" class="btn-primary">Encontrar Camino</button>
+    </div>
+
+    <div class="main-container">
+        <!-- Mapa alineado a la izquierda -->
+        <div id="map"></div>
+        
+        <!-- Panel lateral enmarcado -->
+        <div id="results-panel" class="results-panel">
+            <h3 class="panel-title">Ruta Calculada</h3>
+            <div id="rutas-lista">
+                <p class="placeholder-text">Seleccione origen y destino para calcular la ruta.</p>
+            </div>
+            <div class="distancia-total">
+                <strong>Distancia Total:</strong> <br>
+                <span id="distancia-text">0.0 KM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Leaflet Polyline Decorator para las Flechas -->
+    <script src="https://unpkg.com/leaflet-polylinedecorator@1.6.0/dist/leaflet.polylineDecorator.js"></script>
+    <!-- Lógica de la app -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+# ==== Python ====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ==== Entornos Virtuales ====
+venv/
+.venv/
+env/
+.env/
+
+# ==== Variables de entorno / secretos ====
+.env
+.env.local
+*.env
+
+# ==== IDEs ====
+.vscode/
+.idea/
+*.iml
+*.suo
+*.user
+*.swp
+*.swo
+
+# ==== OS ====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==== Logs ====
+*.log
+pip-log.txt
