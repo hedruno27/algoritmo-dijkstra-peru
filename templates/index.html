@@ -33,6 +33,14 @@
                 {% endfor %}
             </select>
         </div>
+
+        <div class="selector-container">
+            <label for="algoritmo">Algoritmo:</label>
+            <select id="algoritmo">
+                <option value="dijkstra" selected>Dijkstra</option>
+                <option value="genetico">Genético (Agente Viajero)</option>
+            </select>
+        </div>
         
         <button id="btn-calcular" class="btn-primary">Encontrar Camino</button>
     </div>

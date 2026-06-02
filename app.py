@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template, request
 from datos_peru import DEPARTAMENTOS, obtener_grafo
 from dijkstra import calcular_ruta_mas_corta
+from genetico import calcular_ruta_genetico
 
 app = Flask(__name__)
 
@@ -17,6 +18,7 @@ def api_calcular_ruta():
     data = request.json
     origen = data.get('origen')
     destino = data.get('destino')
+    algoritmo = data.get('algoritmo', 'dijkstra')
     
     if not origen or not destino:
         return jsonify({"error": "Origen y destino son requeridos"}), 400
@@ -24,7 +26,10 @@ def api_calcular_ruta():
     if origen not in GRAFO or destino not in GRAFO:
         return jsonify({"error": "Departamento no válido"}), 400
         
-    ruta, distancia_total = calcular_ruta_mas_corta(GRAFO, origen, destino)
+    if algoritmo == 'genetico':
+        ruta, distancia_total = calcular_ruta_genetico(GRAFO, origen, destino)
+    else:
+        ruta, distancia_total = calcular_ruta_mas_corta(GRAFO, origen, destino)
     
     if not ruta:
         return jsonify({"error": "No se encontró una ruta"}), 404

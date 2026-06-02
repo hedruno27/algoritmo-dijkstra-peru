@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCalcular.addEventListener('click', async () => {
         const origen = selectOrigen.value;
         const destino = selectDestino.value;
+        const algoritmo = document.getElementById('algoritmo').value;
 
         if (!origen || !destino) {
             alert('Por favor seleccione origen y destino.');
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/api/calcular_ruta', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ origen, destino })
+                body: JSON.stringify({ origen, destino, algoritmo })
             });
 
             const data = await response.json();
